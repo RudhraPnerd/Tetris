@@ -69,6 +69,3 @@ Tetris/
 
 - Next-piece preview panel
 - Level speed-up as more lines are cleared
-- 7-bag randomizer (guarantees each piece appears once every 7 spawns)
-- Sound effects and background music
-- Wall-kick collision handling for rotation near edges
