@@ -5,7 +5,7 @@ import score
 
 COLS, ROWS = 10, 20
 CELL = 30
-GRID_COLOUR = (40, 40, 50)
+GRID_COLOUR = (40, 20, 50)
 grid = [[None for _ in range(COLS)] for _ in range(ROWS)]
 
 FALL_SPEED = 30
