@@ -69,3 +69,9 @@ Tetris/
 
 - Next-piece preview panel
 - Level speed-up as more lines are cleared
+
+## Send Some Feedback!
+
+You can fill out the feedback form down below (optional):
+
+[Feedback!](https://docs.google.com/forms/d/e/1FAIpQLSelBysP5_qbqVjGGKf_AtpzXo7QB64P6m0B2amrUfsUHl7BzQ/viewform?usp=publish-editor)
