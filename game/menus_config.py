@@ -12,6 +12,7 @@ class Pause:
     RESUME_HINT = config.Font.IN_GAME_FONT.render("Click Resume to continue", True, config.Theme.TEXT_SECONDARY)
 
 
+
 class GameOver:
     BG = (0, 0, 0, 200)
     TITLE = config.Font.TITLE_FONT.render("GAME OVER", True, config.Theme.ACCENT)
