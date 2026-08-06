@@ -16,3 +16,8 @@ class GameOver:
     BG = (0, 0, 0, 200)
     TITLE = config.Font.TITLE_FONT.render("GAME OVER", True, config.Theme.ACCENT)
     HINT = config.Font.IN_GAME_FONT.render("Click Restart to play again", True, config.Theme.ACCENT)
+
+
+class Settings:
+    TITLE = config.Font.TITLE_FONT.render("SETTINGS", True, config.Theme.TEXT_PRIMARY)
+    LABEL = config.Font.IN_GAME_FONT.render("Difficulty", True, config.Theme.TEXT_SECONDARY)
