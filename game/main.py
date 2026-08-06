@@ -46,6 +46,18 @@ while running:
             if game_state == 'Home':
                 if buttons.start.collidepoint(event.pos):
                     game_state = "playing"
+                elif buttons.Settings.settings.collidepoint(event.pos):
+                    game_state = 'settings'
+
+            elif game_state == 'settings':
+                if buttons.Settings.Difficulties.difficulty_easy.collidepoint(event.pos):
+                    matrix.set_difficulty('Easy')
+                elif buttons.Settings.Difficulties.difficulty_normal.collidepoint(event.pos):
+                    matrix.set_difficulty('Normal')
+                elif buttons.Settings.Difficulties.difficulty_hard.collidepoint(event.pos):
+                    matrix.set_difficulty('Hard')
+                elif buttons.Settings.back.collidepoint(event.pos):
+                    game_state = 'Home'
 
             elif matrix.game_over:
                 if buttons.restart_button.collidepoint(event.pos):
@@ -67,6 +79,39 @@ while running:
         start_text = config.Font.BUTTON_FONT.render("Start", True, config.Theme.BUTTON_START)
         text_rect = start_text.get_rect(center=buttons.start.center)
         screen.blit(start_text, text_rect)
+
+        pygame.draw.rect(screen, config.Theme.BUTTON_BG, buttons.Settings.settings, border_radius=6)
+        pygame.draw.rect(screen, config.Theme.TEXT_SECONDARY, buttons.Settings.settings, width=2, border_radius=6)
+        settings_text = config.Font.BUTTON_FONT.render("Settings", True, config.Theme.TEXT_SECONDARY)
+        text_rect = settings_text.get_rect(center=buttons.Settings.settings.center)
+        screen.blit(settings_text, text_rect)
+
+    elif game_state == 'settings':
+        title_rect = menus_config.Settings.TITLE.get_rect(center=(config.SCREEN_SIZE[0] // 2, 120))
+        screen.blit(menus_config.Settings.TITLE, title_rect)
+
+        label_rect = menus_config.Settings.LABEL.get_rect(center=(config.SCREEN_SIZE[0] // 2, 190))
+        screen.blit(menus_config.Settings.LABEL, label_rect)
+
+        difficulty_options = [
+            ("Easy", buttons.Settings.Difficulties.difficulty_easy),
+            ("Normal", buttons.Settings.Difficulties.difficulty_normal),
+            ("Hard", buttons.Settings.Difficulties.difficulty_hard),
+        ]
+        for label, rect in difficulty_options:
+            is_selected = matrix.difficulty == label
+            border_color = config.Theme.ACCENT if is_selected else config.Theme.TEXT_SECONDARY
+            pygame.draw.rect(screen, config.Theme.BUTTON_BG, rect, border_radius=6)
+            pygame.draw.rect(screen, border_color, rect, width=2, border_radius=6)
+            text = config.Font.BUTTON_FONT.render(label, True, border_color)
+            text_rect = text.get_rect(center=rect.center)
+            screen.blit(text, text_rect)
+
+        pygame.draw.rect(screen, config.Theme.BUTTON_BG, buttons.Settings.back, border_radius=6)
+        pygame.draw.rect(screen, config.Theme.TEXT_SECONDARY, buttons.Settings.back, width=2, border_radius=6)
+        back_text = config.Font.BUTTON_FONT.render("Back", True, config.Theme.TEXT_SECONDARY)
+        text_rect = back_text.get_rect(center=buttons.Settings.back.center)
+        screen.blit(back_text, text_rect)
 
     else:
         # sidebar panel background, distinct from the board
@@ -125,4 +170,5 @@ while running:
 
     clock.tick(60)
 
+pygame.quit()
 pygame.quit()
