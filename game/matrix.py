@@ -8,7 +8,10 @@ CELL = 30
 GRID_COLOUR = (40, 20, 50)
 grid = [[None for _ in range(COLS)] for _ in range(ROWS)]
 
-FALL_SPEED = 30
+DIFFICULTIES = {'Easy': 40, 'Normal': 28, 'Hard': 15 }
+difficulty = 'Normal'
+
+FALL_SPEED = DIFFICULTIES[difficulty]
 fall_timer = 0
 
 piece = Piece("T")
@@ -140,3 +143,9 @@ def restart():
     paused = False
     fall_timer = 0
     score.reset()
+
+def set_difficulty(level):
+    global FALL_SPEED, difficulty
+    if level in DIFFICULTIES:
+        difficulty = level
+        FALL_SPEED = DIFFICULTIES[level]
